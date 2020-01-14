@@ -5,23 +5,9 @@
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
     "examples": "webpack-dev-server --content-base src-examples/ --config config/webpack.config.examples.js --mode development --open",
-    "clean": "rimraf dist",
-    "mkdirs": "mkdirp dist/trader/dist dist/examples/dist",
-    "copy-examples": "ncp src-examples/images dist/examples/images && ncp src-examples/index.html dist/examples/index.html && ncp dist/react-examples.js dist/examples/dist/react-examples.js && ncp src-examples/ dist/examples/src",
-    "copy": "npm run copy-examples && npm run copy-trader",
-    "build-large": "webpack --config config/webpack.config.large.js --progress --profile --bail",
-    "build-examples": "webpack --config config/webpack.config.examples.js --progress --profile --bail",
-    "build-dashboard": "webpack --config config/webpack.config.trader.js --progress --profile --bail",
-    "build-all": "npm run build-examples && npm run build-dashboard",
-    "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
-    "start": "npm run examples",
-    "test": "./ts-tests/runTsTests.sh",
-    
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/ag-grid/ag-grid-react-example.git"
+    "server": "nodemon server",
+    "start": "concurrently \"npm run server\" \"npm run examples\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build "
   },
   "private": true,
   "keywords": [
@@ -30,12 +16,8 @@
     "data",
     "table"
   ],
-  "author": "Niall Crosby <niall.crosby@gmail.com>",
+  "author": "test",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/ag-grid/ag-grid-react-example/issues"
-  },
-  "homepage": "http://www.ag-grid.com/",
   "devDependencies": {
     "@ag-grid-community/core": "~22.1.0",
     "@babel/core": "7.4.4",
@@ -64,8 +46,11 @@
     "@ag-grid-community/react": "~22.1.0",
     "@ag-grid-enterprise/all-modules": "~22.1.0",
     "bootstrap": "4.3.1",
+    "concurrently": "^5.0.2",
     "d3": "4.9.1",
+    "express": "^4.17.1",
     "lodash": "^4.17.15",
+    "nodemon": "^2.0.2",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "react-redux": "7.0.3",
