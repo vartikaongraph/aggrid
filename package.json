@@ -15,7 +15,9 @@
     "build-all": "npm run build-examples && npm run build-dashboard",
     "build": "npm run clean && npm run mkdirs && npm run build-all && npm run copy",
     "start": "npm run examples",
-    "test": "./ts-tests/runTsTests.sh"
+    "test": "./ts-tests/runTsTests.sh",
+    
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install npm run build"
   },
   "repository": {
     "type": "git",
