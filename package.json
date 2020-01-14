@@ -7,7 +7,7 @@
     "examples": "webpack-dev-server --content-base src-examples/ --config config/webpack.config.examples.js --mode development --open",
     "server": "nodemon server",
     "start": "concurrently \"npm run server\" \"npm run examples\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install && npm run build "
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
   },
   "private": true,
   "keywords": [
