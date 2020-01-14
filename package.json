@@ -4,7 +4,7 @@
   "description": "Example Reach applicaiton using ag-Grid.",
   "main": "dist/ag-grid-react-example.js",
   "scripts": {
-    "examples": "webpack-dev-server --content-base src-examples/ --config config/webpack.config.examples.js --mode development --open",
+    "examples": "webpack -p --content-base src-examples/ --config config/webpack.config.examples.js --mode production --open",
     "start": "npm run examples",
     "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install  && npm run build"
   },
